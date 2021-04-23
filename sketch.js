@@ -1,5 +1,5 @@
-var helicopterIMG, helicopterSprite, packageSprite,packageIMG;
-var packageBody,ground, opt;
+var helicopterIMG, helicopterSprite, packageSprite,packageIMG,basketBottomS, basketLeftS, basketRightS;
+var packageBody,ground, opt,option, basketBottom, basketLeft, basketRight;
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -27,6 +27,13 @@ function setup() {
 	groundSprite=createSprite(width/2, height-35, width,10);
 	groundSprite.shapeColor=color(255)
 
+	basketBottomS = createSprite(400, 625, 200, 20);
+	basketLeftS = createSprite(300, 600, 20, 100 );
+	basketRightS = createSprite(500, 600, 20, 100,10);
+	basketBottomS.shapeColor="red"
+	basketLeftS.shapeColor="red"
+	basketRightS.shapeColor="red"
+
 
 	engine = Engine.create();
 	world = engine.world;
@@ -38,6 +45,18 @@ function setup() {
 	//Create a Ground
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
  	World.add(world, ground);
+	 option={
+		 isStatic:true, 
+		 friction:10,
+		 restitution:0.01,
+		 bounce:0
+		};
+	basketBottom = Bodies.rectangle(400, 625, 200, 20 , option );
+	basketLeft = Bodies.rectangle(300, 600, 20, 100 , option);
+	basketRight = Bodies.rectangle(500, 600, 20, 100 , option);
+	World.add(world, basketBottom);
+	World.add(world, basketLeft);
+	World.add(world, basketRight);	
 
 
 	Engine.run(engine);
@@ -46,6 +65,9 @@ function setup() {
 
 
 function draw() {
+  rectMode(CENTER);
+  rectMode(CENTER);
+  rectMode(CENTER);
   rectMode(CENTER);
   
   background(0);
