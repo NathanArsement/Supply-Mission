@@ -74,7 +74,7 @@ function draw() {
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
   drawSprites();
- //keyPressed();
+ 
  if (keyWentDown === "DOWN_ARROW") {
     Matter.Body.setStatic(packageBody, false);
 
@@ -82,9 +82,7 @@ function draw() {
   }
 }
 
-function keyPressed() {
-	Matter.Body.setStatic(packageBody, false);
-}
+
 
 
 
